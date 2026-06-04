@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Estoque - Premium System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    
+    <div class="form-container wide">
+        <div class="logo-container">
+            <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2L3.5 7V17L12 22L20.5 17V7L12 2Z" stroke="url(#emeraldGradient)" stroke-width="2" stroke-linejoin="round"/>
+                <path d="M12 6L7 9V15L12 18L17 15V9L12 6Z" fill="url(#emeraldGradient)"/>
+                <defs>
+                    <linearGradient id="emeraldGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                        <stop offset="0%" stop-color="#10b981" />
+                        <stop offset="100%" stop-color="#059669" />
+                    </linearGradient>
+                </defs>
+            </svg>
+        </div>
+
+        <h2>Gerenciamento de Estoque</h2>
+        <p>Controle de inventário profissional e intuitivo.</p>
+                
+        <!-- Sumário de Alertas -->
+        <div class="summary-cards">
+            <div class="card">
+                <h3 id="totalItens">0</h3>
+                <p>Total de Itens</p>
+            </div>
+            <div class="card" style="border-color: rgba(231, 76, 60, 0.3);">
+                <h3 id="itensBaixoEstoque" style="color: #e74c3c;">0</h3>
+                <p>Estoque Baixo</p>
+            </div>
+        </div>
+
+        <!-- Formulário de Cadastro -->
+        <form id="estoqueForm" class="stock-grid">
+            <div class="input-group">
+                <label for="item">Item</label>
+                <input type="text" id="item" placeholder="Nome do produto" required>
+            </div>
+            <div class="input-group">
+                <label for="categoria">Categoria</label>
+                <input type="text" id="categoria" placeholder="Ex: Informática" required>
+            </div>
+            <div class="input-group">
+                <label for="quantidade">Qtd.</label>
+                <input type="number" id="quantidade" placeholder="0" min="0" required>
+            </div>
+            <div class="input-group">
+                <label for="preco">Preço (R$)</label>
+                <input type="number" id="preco" step="0.01" placeholder="0.00" required>
+            </div>
+            <button type="submit" style="grid-column: span 1; margin-top: 25px;">Cadastrar</button>
+        </form>
+
+        <div id="statusMsg" class="status-msg"></div>
+
+        <hr style="border: 0; border-top: 1px solid #3a3a45; margin: 25px 0;">
+
+        <!-- Barra de Busca -->
+        <div class="input-group search-bar">
+            <input type="text" id="searchInput" placeholder="Filtrar por nome ou categoria..." onkeyup="filtrarEstoque()">
+        </div>
+
+        <!-- Tabela de Gerenciamento -->
+        <div class="table-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>Produto</th>
+                        <th>Categoria</th>
+                        <th>Estoque</th>
+                        <th>Preço Unit.</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+                <tbody id="listaEstoque">
+                    <!-- Itens carregados via JS -->
+                </tbody>
+            </table>
+        </div>
+
+        <div style="margin-top: 25px;">
+            <p><a href="home.html">← Voltar ao Dashboard</a></p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', atualizarTabelaEstoque);
+    </script>
+</body>
+</html>

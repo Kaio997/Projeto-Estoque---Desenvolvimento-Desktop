@@ -8,6 +8,20 @@ function showMessage(text, type) {
     setTimeout(() => { statusMsg.className = 'status-msg'; }, 4000);
 }
 
+function validarSenha(senha) {
+    const minComprimento = 8;
+    const temMaiuscula = /[A-Z]/.test(senha);
+    const temMinuscula = /[a-z]/.test(senha);
+    const temEspecial = /[!@#$%^&*(),.?":{}|<>]/.test(senha);
+
+    if (senha.length < minComprimento) return "A senha deve ter pelo menos 8 caracteres.";
+    if (!temMaiuscula) return "A senha deve conter pelo menos uma letra maiúscula.";
+    if (!temMinuscula) return "A senha deve conter pelo menos uma letra minúscula.";
+    if (!temEspecial) return "A senha deve conter pelo menos um caractere especial.";
+    
+    return null; // Senha válida
+}
+
 // --- SISTEMA DE LOGIN E CADASTRO ---
 const loginForm = document.getElementById('loginForm');
 const cadastroForm = document.getElementById('cadastroForm');
@@ -19,6 +33,12 @@ if (cadastroForm) {
         const email = document.getElementById('email').value;
         const senha = document.getElementById('senha').value;
         const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+        const erroSenha = validarSenha(senha);
+        if (erroSenha) {
+            showMessage(erroSenha, 'error');
+            return;
+        }
 
         if (senha !== confirmarSenha) {
             showMessage('As senhas não coincidem!', 'error');
@@ -43,6 +63,13 @@ if (loginForm) {
         e.preventDefault();
         const email = document.getElementById('email').value;
         const senha = document.getElementById('senha').value;
+
+        const erroSenha = validarSenha(senha);
+        if (erroSenha) {
+            showMessage(erroSenha, 'error');
+            return;
+        }
+
         const usuarios = JSON.parse(localStorage.getItem('usuarios')) || [];
         const user = usuarios.find(u => u.email === email && u.senha === senha);
 
@@ -98,9 +125,9 @@ if (cancelBtn) {
 }
 
 function resetForm() {
-    editIndexInput.value = "-1";
-    submitBtn.textContent = "Cadastrar";
-    cancelBtn.style.display = "none";
+    if (editIndexInput) editIndexInput.value = "-1";
+    if (submitBtn) submitBtn.textContent = "Cadastrar";
+    if (cancelBtn) cancelBtn.style.display = "none";
 }
 
 function atualizarTabelaEstoque() {
@@ -153,9 +180,9 @@ function editarItemEstoque(index) {
     document.getElementById('preco').value = item.preco;
     
     // Configurar modo de edição
-    editIndexInput.value = index;
-    submitBtn.textContent = "Salvar Alterações";
-    cancelBtn.style.display = "block";
+    if (editIndexInput) editIndexInput.value = index;
+    if (submitBtn) submitBtn.textContent = "Salvar Alterações";
+    if (cancelBtn) cancelBtn.style.display = "block";
     
     // Rolar para o formulário
     estoqueForm.scrollIntoView({ behavior: 'smooth' });

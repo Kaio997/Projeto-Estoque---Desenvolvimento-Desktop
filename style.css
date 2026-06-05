@@ -13,6 +13,12 @@ body {
     align-items: center;
     min-height: 100vh;
     padding: 20px;
+    background-image: url(Gemini_Generated_Image_dzw4ildzw4ildzw4.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100-vh;
 }
 
 .form-container {
@@ -107,6 +113,14 @@ p a:hover {
     background-color: #020617;
 }
 
+.input-hint {
+    display: block;
+    font-size: 10px;
+    color: #94a3b8;
+    margin-top: 6px;
+    line-height: 1.4;
+}
+
 button {
     width: 100%;
     padding: 16px;
@@ -199,7 +213,7 @@ tr:hover {
     padding: 8px 14px;
     font-size: 11px;
     width: auto;
-    margin: 0;
+    margin: 2px;
     border-radius: 8px;
 }
 
@@ -210,6 +224,15 @@ tr:hover {
 
 .btn-danger:hover {
     box-shadow: 0 10px 15px -3px rgba(244, 63, 94, 0.3);
+}
+
+.btn-edit {
+    background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+    box-shadow: 0 4px 6px -1px rgba(59, 130, 246, 0.2);
+}
+
+.btn-edit:hover {
+    box-shadow: 0 10px 15px -3px rgba(59, 130, 246, 0.3);
 }
 
 .search-bar {

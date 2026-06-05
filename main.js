@@ -3,8 +3,8 @@ const path = require('path');
 
 function criarJanela() {
   const janela = new BrowserWindow({
-    width: 450,          
-    height: 700,         
+    width: 1200,          
+    height: 900,         
     resizable: false,    
     autoHideMenuBar: true, 
     webPreferences: {

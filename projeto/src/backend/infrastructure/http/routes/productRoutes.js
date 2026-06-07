@@ -1,5 +1,5 @@
 const express = require('express');
-const SequelizeProductRepository = require('../database/repositories/SequelizeProductRepository');
+const SequelizeProductRepository = require('../../database/repositories/SequelizeProductRepository');
 const CreateProduct = require('../../application/use-cases/CreateProduct');
 const GetAllProducts = require('../../application/use-cases/GetAllProducts');
 const UpdateProduct = require('../../application/use-cases/UpdateProduct');

@@ -10,7 +10,7 @@ const errorHandler = require('./middlewares/errorHandler');
 const app = express();
 
 app.use(cors({
-  origin: 'https://projeto-estoque-desenvolvimento-desktop-lu9qw7oqh.vercel.app'
+  origin: [/https:\/\/projeto-estoque-desenvolvimento-desktop.*\.vercel\.app$/]
 }));
 app.use(express.json());
 

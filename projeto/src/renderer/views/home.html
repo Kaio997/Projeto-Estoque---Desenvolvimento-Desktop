@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockOS - Dashboard</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/home.css">
+</head>
+<body class="admin-body">
+    
+    <div class="dashboard-wrapper">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L3.5 7V17L12 22L20.5 17V7L12 2Z" stroke="#10b981" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 6L7 9V15L12 18L17 15V9L12 6Z" fill="#10b981"/>
+                    </svg>
+                </div>
+                <span class="brand-name">StockOS</span>
+            </div>
+
+            <nav class="sidebar-nav">
+                <a href="home.html" class="nav-item active">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"></rect><rect x="14" y="3" width="7" height="7"></rect><rect x="14" y="14" width="7" height="7"></rect><rect x="3" y="14" width="7" height="7"></rect></svg>
+                    Dashboard
+                </a>
+                <a href="estoque.html" class="nav-item">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path><polyline points="3.27 6.96 12 12.01 20.73 6.96"></polyline><line x1="12" y1="22.08" x2="12" y2="12"></line></svg>
+                    Estoque
+                </a>
+                <a href="#" class="nav-item">
+                    <svg viewBox="0 0 24 24" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+                    Fornecedores
+                </a>
+            </nav>
+
+            <div class="sidebar-footer">
+                <button id="logoutBtn" class="logout-link">
+                    <svg viewBox="0 0 24 24" width="18" height="18" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"></path><polyline points="16 17 21 12 16 7"></polyline><line x1="21" y1="12" x2="9" y2="12"></line></svg>
+                    Sair da conta
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <header class="top-header">
+                <div class="header-left">
+                    <h1>Bem-vindo, <span id="userNameDisplay">Usuário</span>!</h1>
+                    <p>Aqui está o que está acontecendo com seu estoque hoje.</p>
+                </div>
+                <div class="header-right">
+                    <div class="user-profile">
+                        <span id="userNameHeader">Usuário</span>
+                        <div class="avatar">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                        </div>
+                    </div>
+                </div>
+            </header>
+
+            <div class="dashboard-grid">
+                <!-- Summary Stats -->
+                <section class="summary-section">
+                    <div class="stats-card">
+                        <div class="stats-info">
+                            <span class="stats-label">PATRIMÔNIO EM ESTOQUE</span>
+                            <h2 id="valorTotalEstoque">R$ 0,00</h2>
+                            <p class="stats-trend positive">↑ 12% desde o último mês</p>
+                        </div>
+                        <div class="stats-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#10b981" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+                        </div>
+                    </div>
+                    <div class="stats-card">
+                        <div class="stats-info">
+                            <span class="stats-label">TOTAL DE ITENS</span>
+                            <h2 id="totalItens">0</h2>
+                            <p class="stats-trend">Volume total de SKUs</p>
+                        </div>
+                        <div class="stats-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#10b981" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+                        </div>
+                    </div>
+                    <div class="stats-card alert">
+                        <div class="stats-info">
+                            <span class="stats-label">ALERTAS CRÍTICOS</span>
+                            <h2 id="itensBaixoEstoque">0</h2>
+                            <p class="stats-trend negative">Itens precisam de reposição</p>
+                        </div>
+                        <div class="stats-icon">
+                            <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="#f43f5e" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path></svg>
+                        </div>
+                    </div>
+                </section>
+
+                <div class="home-layout">
+                    <!-- Quick Actions -->
+                    <section class="quick-actions">
+                        <div class="card">
+                            <h3 class="card-title">Ações Rápidas</h3>
+                            <div class="actions-grid">
+                                <a href="estoque.html" class="action-item">
+                                    <div class="action-icon emerald">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 5v14M5 12h14"></path></svg>
+                                    </div>
+                                    <span>Novo Item</span>
+                                </a>
+                                <a href="estoque.html" class="action-item">
+                                    <div class="action-icon blue">
+                                        <svg viewBox="0 0 24 24" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                                    </div>
+                                    <span>Relatórios</span>
+                                </a>
+                            </div>
+                        </div>
+                    </section>
+
+                    <!-- Low Stock List -->
+                    <section class="recent-alerts">
+                        <div class="card">
+                            <h3 class="card-title">Reposição Necessária</h3>
+                            <div class="alerts-list" id="listaAlertasHome">
+                                <!-- Preenchido via JS -->
+                                <p style="color: var(--text-muted); font-size: 14px;">Carregando alertas...</p>
+                            </div>
+                            <a href="estoque.html" class="view-all">Ver estoque completo →</a>
+                        </div>
+                    </section>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/home.js"></script>
+</body>
+</html>

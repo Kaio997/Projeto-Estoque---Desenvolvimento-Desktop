@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StockOS - Criar Conta</title>
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/pagcadastro.css">
+</head>
+<body class="login-body">
+    
+    <div class="login-container">
+        <!-- Left Side: Content -->
+        <div class="content-side">
+            <div class="brand">
+                <div class="brand-logo">
+                    <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12 2L3.5 7V17L12 22L20.5 17V7L12 2Z" stroke="#10b981" stroke-width="2" stroke-linejoin="round"/>
+                        <path d="M12 6L7 9V15L12 18L17 15V9L12 6Z" fill="#10b981"/>
+                    </svg>
+                </div>
+                <span class="brand-name">StockOS</span>
+            </div>
+
+            <div class="hero-section">
+                <span class="hero-subtitle">COMECE GRÁTIS · SEM CARTÃO</span>
+                <h1 class="hero-title">Crie sua conta e leve seu estoque para o próximo nível.</h1>
+                <p class="hero-description">Junte-se a milhares de empresas que confiam no StockOS para operar com agilidade e precisão.</p>
+            </div>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 20v-6M9 20v-10M15 20v-2M18 20v-16M21 20v-4M3 20v-2M6 20v-8"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Setup em minutos</h3>
+                        <p>Importe seus produtos e comece a operar hoje.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Automação inteligente</h3>
+                        <p>Reabastecimento e alertas automáticos por IA.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-icon">
+                        <svg viewBox="0 0 24 24" fill="none" stroke="#10b981" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Segurança nível enterprise</h3>
+                        <p>Criptografia TLS 1.3 e backups diários.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Right Side: Registration Form -->
+        <div class="form-side">
+            <div class="login-card">
+                <div class="card-header">
+                    <div class="header-icon">
+                        <svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M12 2L3.5 7V17L12 22L20.5 17V7L12 2Z" stroke="#10b981" stroke-width="2" stroke-linejoin="round"/>
+                            <path d="M12 6L7 9V15L12 18L17 15V9L12 6Z" fill="#10b981"/>
+                        </svg>
+                    </div>
+                    <h2>Criar conta</h2>
+                    <p>Comece a gerenciar seu estoque em minutos.</p>
+                </div>
+
+                <form id="cadastroForm">
+                    <div class="input-group">
+                        <label for="nome">NOME COMPLETO</label>
+                        <div class="input-wrapper">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+                            </span>
+                            <input type="text" id="nome" placeholder="Seu nome" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="email">E-MAIL</label>
+                        <div class="input-wrapper">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
+                            </span>
+                            <input type="email" id="email" placeholder="seu@email.com" required>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="senha">SENHA</label>
+                        <div class="input-wrapper">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            </span>
+                            <input type="password" id="senha" placeholder="••••••••" required>
+                            <span class="icon-right">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="confirmarSenha">CONFIRMAR SENHA</label>
+                        <div class="input-wrapper">
+                            <span class="icon">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"></rect><path d="M7 11V7a5 5 0 0 1 10 0v4"></path></svg>
+                            </span>
+                            <input type="password" id="confirmarSenha" placeholder="••••••••" required>
+                            <span class="icon-right">
+                                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"></path><circle cx="12" cy="12" r="3"></circle></svg>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="form-options">
+                        <label class="checkbox-container">
+                            <input type="checkbox" required>
+                            <span class="checkmark"></span>
+                            Eu concordo com os <a href="#" style="color: var(--primary); text-decoration: none;">Termos de Uso</a> e a <a href="#" style="color: var(--primary); text-decoration: none;">Política de Privacidade</a>.
+                        </label>
+                    </div>
+
+                    <button type="submit" class="btn-primary">CRIAR CONTA</button>
+                </form>
+                
+                <div id="statusMsg" class="status-msg"></div>
+                <div class="card-footer">
+                    <p>Já tem uma conta? <a href="index.html">Entrar</a></p>
+                    <div class="security-info" style="margin-top: 15px; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 5px;">
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        Seus dados estão protegidos - Criptografia TLS 1.3
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../js/common.js"></script>
+    <script src="../js/pagcadastro.js"></script>
+</body>
+</html>

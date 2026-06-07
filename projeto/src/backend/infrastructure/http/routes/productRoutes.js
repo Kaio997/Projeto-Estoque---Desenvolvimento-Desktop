@@ -1,9 +1,9 @@
 const express = require('express');
 const SequelizeProductRepository = require('../../database/repositories/SequelizeProductRepository');
-const CreateProduct = require('../../application/use-cases/CreateProduct');
-const GetAllProducts = require('../../application/use-cases/GetAllProducts');
-const UpdateProduct = require('../../application/use-cases/UpdateProduct');
-const DeleteProduct = require('../../application/use-cases/DeleteProduct');
+const CreateProduct = require('../../../application/use-cases/CreateProduct');
+const GetAllProducts = require('../../../application/use-cases/GetAllProducts');
+const UpdateProduct = require('../../../application/use-cases/UpdateProduct');
+const DeleteProduct = require('../../../application/use-cases/DeleteProduct');
 const ProductController = require('../controllers/ProductController');
 const authMiddleware = require('../middlewares/authMiddleware');
 

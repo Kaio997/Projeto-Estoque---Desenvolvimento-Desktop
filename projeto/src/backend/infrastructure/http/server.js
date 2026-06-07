@@ -9,7 +9,9 @@ const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 
-app.use(cors());
+app.use(cors({
+  origin: 'https://projeto-estoque-desenvolvimento-desktop-lu9qw7oqh.vercel.app'
+}));
 app.use(express.json());
 
 // Routes

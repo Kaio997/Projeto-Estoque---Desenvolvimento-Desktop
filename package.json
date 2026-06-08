@@ -1,15 +1,11 @@
 {
-    "name": "app-electron",
+    "name": "stockos-desktop",
     "version": "1.0.0",
-    "description": "",
-    "main": "projeto/src/main/main.js",
+    "description": "StockOS Desktop App",
+    "main": "main.js",
     "scripts": {
         "start": "electron ."
     },
-    "keywords": [],
-    "author": "",
-    "license": "ISC",
-    "type": "commonjs",
     "devDependencies": {
         "electron": "^42.3.3"
     }

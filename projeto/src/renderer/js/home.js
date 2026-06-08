@@ -61,3 +61,4 @@ async function updateDashboard() {
 }
 
 document.addEventListener('DOMContentLoaded', updateDashboard);
+window.addEventListener('focus', updateDashboard);

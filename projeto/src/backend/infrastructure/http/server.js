@@ -16,25 +16,7 @@ const allowedOrigins = [
   'http://localhost:3000'
 ];
 
-app.use(cors({
-  origin: function (origin, callback) {
-    // allow requests with no origin (like mobile apps or curl requests)
-    if (!origin) return callback(null, true);
-    
-    const isAllowed = allowedOrigins.some(pattern => {
-      if (pattern instanceof RegExp) {
-        return pattern.test(origin);
-      }
-      return pattern === origin;
-    });
-
-    if (isAllowed) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
+app.use(cors());
 app.use(express.json());
 
 // Routes

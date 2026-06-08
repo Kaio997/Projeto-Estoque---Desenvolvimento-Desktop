@@ -118,5 +118,19 @@
     <script src="../js/common.js"></script>
     <script src="../js/apiClient.js"></script>
     <script src="../js/index.js"></script>
+    <script>
+        document.querySelectorAll('.icon-right').forEach(icon => {
+            icon.addEventListener('click', function() {
+                const input = this.parentElement.querySelector('input');
+                if (input.type === 'password') {
+                    input.type = 'text';
+                    this.style.color = 'var(--primary)';
+                } else {
+                    input.type = 'password';
+                    this.style.color = 'inherit';
+                }
+            });
+        });
+    </script>
 </body>
 </html>

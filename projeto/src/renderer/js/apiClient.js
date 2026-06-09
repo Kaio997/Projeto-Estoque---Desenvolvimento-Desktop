@@ -1,8 +1,10 @@
-const API_BASE_URL = 'http://localhost:3000/api';
+const API_BASE_URL = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
+  ? 'http://localhost:3000/api'
+  : 'https://projeto-estoque-desenvolvimento-desktop.onrender.com/api';
 
 const apiClient = {
   async request(endpoint, options = {}) {
-    const token = localStorage.getItem('token');
+    const token = this.getToken();
     const headers = {
       'Content-Type': 'application/json',
       ...options.headers,
@@ -16,6 +18,10 @@ const apiClient = {
       ...options,
       headers,
     });
+
+    if (response.status === 204) {
+      return null;
+    }
 
     const data = await response.json();
 

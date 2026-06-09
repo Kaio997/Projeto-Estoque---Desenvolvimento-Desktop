@@ -1,3 +1,7 @@
+if (apiClient.getToken() && localStorage.getItem('usuarioLogado')) {
+    window.location.href = 'home.html';
+}
+
 const loginForm = document.getElementById('loginForm');
 
 if (loginForm) {
@@ -13,6 +17,7 @@ if (loginForm) {
             });
 
             apiClient.setToken(data.token);
+            localStorage.setItem('usuarioLogado', JSON.stringify(data.user));
             window.location.href = 'home.html';
         } catch (error) {
             showMessage(error.message, 'error');

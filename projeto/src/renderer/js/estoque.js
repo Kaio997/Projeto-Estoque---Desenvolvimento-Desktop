@@ -1,20 +1,25 @@
 const welcomeMsg = document.getElementById('userNameDisplay');
 const logoutBtn = document.getElementById('logoutBtn');
 
-// Auth Check (Refactor later to use token validation)
+const user = JSON.parse(localStorage.getItem('usuarioLogado'));
 const token = apiClient.getToken();
-if (!token) {
+
+if (user && token) {
+    if (welcomeMsg) welcomeMsg.textContent = user.name;
+    const userNameHeader = document.getElementById('userNameHeader');
+    if (userNameHeader) userNameHeader.textContent = user.name;
+} else {
     window.location.href = 'index.html';
 }
 
 if (logoutBtn) {
     logoutBtn.addEventListener('click', () => {
         apiClient.clearToken();
+        localStorage.removeItem('usuarioLogado');
         window.location.href = 'index.html';
     });
 }
 
-// Inventory Logic
 const estoqueForm = document.getElementById('estoqueForm');
 const listaEstoque = document.getElementById('listaEstoque');
 const editIdInput = document.getElementById('editId');
@@ -47,7 +52,7 @@ if (estoqueForm) {
             }
 
             estoqueForm.reset();
-            atualizarPagina();
+            updatePage();
         } catch (error) {
             showMessage(error.message, 'error');
         }
@@ -67,48 +72,48 @@ function resetForm() {
     if (cancelBtn) cancelBtn.style.display = "none";
 }
 
-async function atualizarPagina() {
+async function updatePage() {
     try {
-        const estoque = await apiClient.request('/products');
-        renderizarItens(estoque);
-        atualizarSumario(estoque);
+        const items = await apiClient.request('/products');
+        renderItems(items);
+        updateSummary(items);
     } catch (error) {
         showMessage('Erro ao carregar estoque', 'error');
     }
 }
 
-function atualizarSumario(estoque) {
+function updateSummary(items) {
     const totalItensEl = document.getElementById('totalItens');
     const itensBaixoEl = document.getElementById('itensBaixoEstoque');
     const threshold = 5;
-    const totalBaixo = estoque.filter(item => parseInt(item.quantity) < threshold).length;
+    const totalBaixo = items.filter(item => parseInt(item.quantity) < threshold).length;
 
-    if (totalItensEl) totalItensEl.textContent = estoque.length;
+    if (totalItensEl) totalItensEl.textContent = items.length;
     if (itensBaixoEl) itensBaixoEl.textContent = totalBaixo;
 }
 
-function renderizarItens(itens) {
+function renderItems(items) {
     if (!listaEstoque) return;
     listaEstoque.innerHTML = '';
     const threshold = 5;
 
-    itens.forEach((item) => {
-        const isBaixo = parseInt(item.quantity) < threshold;
+    items.forEach((item) => {
+        const isLowStock = parseInt(item.quantity) < threshold;
         const row = document.createElement('tr');
         row.innerHTML = `
             <td>
                 <div style="font-weight: 700;">${item.name}</div>
-                ${isBaixo ? '<span class="badge-warning">REPOR ESTOQUE</span>' : ''}
+                ${isLowStock ? '<span class="badge-warning">REPOR ESTOQUE</span>' : ''}
             </td>
             <td><span style="opacity: 0.7; font-size: 12px;">${item.category}</span></td>
-            <td class="${isBaixo ? 'low-stock' : ''}">${item.quantity} un</td>
+            <td class="${isLowStock ? 'low-stock' : ''}">${item.quantity} un</td>
             <td>R$ ${parseFloat(item.price).toLocaleString('pt-BR', { minimumFractionDigits: 2 })}</td>
             <td class="text-right">
                 <div class="action-btns">
-                    <button class="btn-icon edit" onclick="editarItemEstoque('${item.id}')" title="Editar">
+                    <button class="btn-icon edit" onclick="editInventoryItem('${item.id}')" title="Editar">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"></path><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"></path></svg>
                     </button>
-                    <button class="btn-icon delete" onclick="removerItemEstoque('${item.id}')" title="Remover">
+                    <button class="btn-icon delete" onclick="removeInventoryItem('${item.id}')" title="Remover">
                         <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 0 1-2 2H7a2 2 0 0 1-2-2V6m3 0V4a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2"></path><line x1="10" y1="11" x2="10" y2="17"></line><line x1="14" y1="11" x2="14" y2="17"></line></svg>
                     </button>
                 </div>
@@ -118,10 +123,10 @@ function renderizarItens(itens) {
     });
 }
 
-window.editarItemEstoque = async function(id) {
+window.editInventoryItem = async function(id) {
     try {
-        const produtos = await apiClient.request('/products');
-        const item = produtos.find(p => p.id === id);
+        const items = await apiClient.request('/products');
+        const item = items.find(p => p.id === id);
         if (!item) return;
 
         document.getElementById('item').value = item.name;
@@ -137,11 +142,11 @@ window.editarItemEstoque = async function(id) {
     }
 }
 
-window.removerItemEstoque = async function(id) {
+window.removeInventoryItem = async function(id) {
     if (confirm('Tem certeza que deseja remover este item?')) {
         try {
             await apiClient.request(`/products/${id}`, { method: 'DELETE' });
-            atualizarPagina();
+            updatePage();
             showMessage('Item removido!', 'error');
         } catch (error) {
             showMessage(error.message, 'error');
@@ -149,4 +154,4 @@ window.removerItemEstoque = async function(id) {
     }
 }
 
-document.addEventListener('DOMContentLoaded', atualizarPagina);
+document.addEventListener('DOMContentLoaded', updatePage);

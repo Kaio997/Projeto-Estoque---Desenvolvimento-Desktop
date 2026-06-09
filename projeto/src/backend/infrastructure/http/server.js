@@ -9,6 +9,13 @@ const errorHandler = require('./middlewares/errorHandler');
 
 const app = express();
 
+const allowedOrigins = [
+  /https:\/\/projeto-estoque-desenvolvimento-desktop.*\.vercel\.app$/,
+  'http://localhost:5500',
+  'http://127.0.0.1:5500',
+  'http://localhost:3000'
+];
+
 app.use(cors());
 app.use(express.json());
 

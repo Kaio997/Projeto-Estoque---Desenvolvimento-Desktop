@@ -1,3 +1,7 @@
+if (apiClient.getToken() && localStorage.getItem('usuarioLogado')) {
+    window.location.href = 'home.html';
+}
+
 const cadastroForm = document.getElementById('cadastroForm');
 
 if (cadastroForm) {
@@ -7,6 +11,12 @@ if (cadastroForm) {
         const email = document.getElementById('email').value;
         const password = document.getElementById('senha').value;
         const confirmarSenha = document.getElementById('confirmarSenha').value;
+
+        const passwordError = validatePassword(password);
+        if (passwordError) {
+            showMessage(passwordError, 'error');
+            return;
+        }
 
         if (password !== confirmarSenha) {
             showMessage('As senhas não coincidem!', 'error');

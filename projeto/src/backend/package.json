@@ -2,10 +2,10 @@
   "name": "stockos-backend",
   "version": "1.0.0",
   "description": "StockOS Backend with Clean Architecture and DDD",
-  "main": "src/infrastructure/http/server.js",
+  "main": "infrastructure/http/server.js",
   "scripts": {
-    "start": "node src/infrastructure/http/server.js",
-    "dev": "nodemon src/infrastructure/http/server.js"
+    "start": "node infrastructure/http/server.js",
+    "dev": "nodemon infrastructure/http/server.js"
   },
   "dependencies": {
     "argon2": "^0.40.1",

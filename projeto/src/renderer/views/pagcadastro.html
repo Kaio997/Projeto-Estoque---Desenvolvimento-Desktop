@@ -121,30 +121,38 @@
                     </div>
 
                     <div class="form-options">
-                        <label class="checkbox-container">
-                            <input type="checkbox" required>
-                            <span class="checkmark"></span>
-                            Eu concordo com os <a href="#" style="color: var(--primary); text-decoration: none;">Termos de Uso</a> e a <a href="#" style="color: var(--primary); text-decoration: none;">Política de Privacidade</a>.
-                        </label>
+                        <!-- Terms checkbox removed -->
                     </div>
 
                     <button type="submit" class="btn-primary">CRIAR CONTA</button>
-                </form>
-                
-                <div id="statusMsg" class="status-msg"></div>
-                <div class="card-footer">
+                    </form>
+
+                    <div id="statusMsg" class="status-msg"></div>
+                    <div class="card-footer">
                     <p>Já tem uma conta? <a href="index.html">Entrar</a></p>
                     <div class="security-info" style="margin-top: 15px; font-size: 11px; color: var(--text-muted); display: flex; align-items: center; justify-content: center; gap: 5px;">
-                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
+                        <svg viewBox="0 0 24 24" width="12" height="12" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"></path></svg>
                         Seus dados estão protegidos - Criptografia TLS 1.3
                     </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                    </div>
+                    </div>
+                    </div>
+                    </div>
 
-    <script src="../js/common.js"></script>
-    <script src="../js/apiClient.js"></script>
-    <script src="../js/pagcadastro.js"></script>
-</body>
-</html>
+                    <script src="../js/common.js"></script>
+                    <script src="../js/apiClient.js"></script>
+                    <script src="../js/pagcadastro.js"></script>
+                    <script>
+                    document.querySelectorAll('.icon-right').forEach(icon => {
+                    icon.addEventListener('click', function() {
+                    const input = this.parentElement.querySelector('input');
+                    if (input.type === 'password') {
+                    input.type = 'text';
+                    } else {
+                    input.type = 'password';
+                    }
+                    });
+                    });
+                    </script>
+                    </body>
+                    </html>

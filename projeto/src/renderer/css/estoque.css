@@ -241,7 +241,23 @@
     margin-top: 24px;
 }
 
-.btn-secondary {
+#submitBtn {
+    flex: 1;
+    background: var(--primary);
+    color: white;
+    border: none;
+    padding: 14px 24px;
+    border-radius: 12px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#submitBtn:hover {
+    background: var(--primary-dark);
+}
+
+.btn-secondary, #cancelBtn {
     background: rgba(255, 255, 255, 0.05);
     color: var(--text-muted);
     border: 1px solid var(--border);
@@ -252,7 +268,7 @@
     transition: all 0.2s;
 }
 
-.btn-secondary:hover {
+.btn-secondary:hover, #cancelBtn:hover {
     background: rgba(255, 255, 255, 0.1);
     color: var(--text-main);
 }

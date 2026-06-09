@@ -1,4 +1,4 @@
-const { CreateProductDTO, UpdateProductDTO } = require('../../application/dtos/ProductDTO');
+const { CreateProductDTO, UpdateProductDTO } = require('../../../application/dtos/ProductDTO');
 
 class ProductController {
   constructor(createProduct, getAllProducts, updateProduct, deleteProduct) {

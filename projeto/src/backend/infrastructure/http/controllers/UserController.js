@@ -1,6 +1,7 @@
 const RegisterUser = require('../../../application/use-cases/RegisterUser');
 const LoginUser = require('../../../application/use-cases/LoginUser');
 const SequelizeUserRepository = require('../../database/repositories/SequelizeUserRepository');
+const { RegisterUserDTO } = require('../../../application/dtos/UserDTO');
 
 class UserController {
   constructor() {
@@ -11,10 +12,9 @@ class UserController {
 
   async register(req, res, next) {
     try {
-      const userData = req.body;
+      const userData = RegisterUserDTO.parse(req.body);
       const user = await this.registerUser.execute(userData);
       
-      // Don't send password back
       const { password, ...userWithoutPassword } = user;
       
       res.status(201).json(userWithoutPassword);
